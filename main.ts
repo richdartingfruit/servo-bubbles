@@ -1,10 +1,10 @@
 input.onButtonPressed(Button.A, function () {
-    angle = Math.max(0, angle - 5)
+    angle = Math.max(15, angle - 5)
     pins.servoWritePin(AnalogPin.P0, angle)
     led.stopAnimation()
 })
 input.onButtonPressed(Button.B, function () {
-    angle = Math.min(180, angle + 5)
+    angle = Math.min(100, angle + 5)
     pins.servoWritePin(AnalogPin.P0, angle)
     led.stopAnimation()
 })
