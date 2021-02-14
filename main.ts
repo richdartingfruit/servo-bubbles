@@ -1,7 +1,11 @@
 function goFan () {
     while (true) {
         angle = angle + 5
-        if (angle >= 100) {
+        if (angle == 30) {
+            basic.pause(2000)
+            drip()
+        }
+        if (angle >= 105) {
             break;
         }
         servos.P0.setAngle(angle)
@@ -13,7 +17,7 @@ input.onButtonPressed(Button.A, function () {
     start = true
 })
 function fanStop () {
-    pins.digitalWritePin(DigitalPin.P1, 0)
+    pins.digitalWritePin(DigitalPin.P1, 1)
 }
 input.onButtonPressed(Button.B, function () {
     start = false
@@ -29,13 +33,24 @@ function goDip () {
     }
     led.stopAnimation()
 }
+function drip () {
+    for (let index = 0; index < 17; index++) {
+        angle = angle + 5
+        servos.P0.setAngle(angle)
+        basic.pause(150)
+        angle = angle - 5
+        servos.P0.setAngle(angle)
+        basic.pause(150)
+    }
+}
 function fanStart () {
-    pins.digitalWritePin(DigitalPin.P1, 1)
+    pins.digitalWritePin(DigitalPin.P1, 0)
 }
 let angle = 0
 let start = false
 start = false
 angle = 15
+fanStop()
 pins.servoWritePin(AnalogPin.P0, angle)
 basic.forever(function () {
     basic.showNumber(angle)
@@ -43,11 +58,12 @@ basic.forever(function () {
 basic.forever(function () {
     while (start == true) {
         goDip()
-        basic.pause(200)
+        basic.pause(1000)
         goFan()
         basic.pause(100)
         fanStart()
-        basic.pause(5000)
+        basic.pause(3000)
         fanStop()
+        basic.pause(100)
     }
 })
