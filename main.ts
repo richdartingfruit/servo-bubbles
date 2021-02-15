@@ -69,7 +69,7 @@ basic.forever(function () {
         goFan()
         basic.pause(100)
         fanStart()
-        basic.pause(5000)
+        basic.pause(3000)
         fanStop()
         basic.pause(1000)
     }
