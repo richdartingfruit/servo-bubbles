@@ -31,7 +31,7 @@ input.onButtonPressed(Button.B, function () {
 function goDip () {
     while (true) {
         angle = angle + 5
-        if (angle >= 140) {
+        if (angle >= 145) {
             break;
         }
         servos.P0.setAngle(angle)
