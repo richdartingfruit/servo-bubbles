@@ -55,7 +55,8 @@ function fanStart () {
 let angle = 0
 let start = false
 start = false
-angle = 70
+// 70
+angle = 100
 fanStop()
 pins.servoWritePin(AnalogPin.P0, angle)
 basic.forever(function () {
